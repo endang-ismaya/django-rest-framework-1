@@ -13,6 +13,11 @@ router.register(
     viewset=views.UserProfileViewSet,
     basename="app_profile_api__profiles",
 )
+router.register(
+    prefix="feeds",
+    viewset=views.UserProfileFeedViewSet,
+    basename="app_profile_api__feeds",
+)
 
 urlpatterns = [
     path("hello-view/", views.HelloAPIView.as_view()),

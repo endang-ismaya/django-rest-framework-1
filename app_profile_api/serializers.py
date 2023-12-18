@@ -33,3 +33,16 @@ class UserProfileSerializer(serializers.ModelSerializer):
             instance.set_password(password)
 
         return super().update(instance, validated_data)
+
+
+class ProfileFeedItemSerializer(serializers.ModelSerializer):
+    """Serializes profile feed items"""
+
+    status_text = serializers.CharField(max_length=255)
+
+    class Meta:
+        model = models.ProfileFeedItem
+        fields = "__all__"
+        read_only_fields = ["id", "user_profile", "created_on"]
+        # fields = ("id", "user_profile", "status_text", "created_on")
+        # extra_kwards = {"user_profile": {"read_only": True}}
